@@ -6,10 +6,30 @@
         <div class="col">
             <app-pais-input 
             (onEnter)="buscar($event)"
+            (onDebounce)="sugerencias($event)"
             placeHolder="Buscar Capital...">
         </app-pais-input>
         </div>
     </div>
+
+    <ul *ngIf="mostrarSugerencias"
+        class="list-group">
+        <li 
+            class="list-group-item list-group-item-action"
+            *ngFor="let pais of capitalesSugeridas">
+            <a class="nav-link"
+                [routerLink]="['/pais',pais.alpha2Code]">
+                {{pais.capital}}
+            </a>
+        </li>        
+        <li 
+            class="list-group-item list-group-item-action">
+            <a class="nav-link"
+                (click)="buscarSugerido(termino)">
+                Buscar "{{termino}}"
+            </a>
+        </li>        
+    </ul>
     
     <hr>
 </div>

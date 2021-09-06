@@ -47,6 +47,7 @@ export class PorPaisComponent{
 
   sugerencias(termino:string){
     this.hayError = false;
+    this.termino = termino;
     this.mostrarSugerencias = true;
 
     this.paisService.buscarPais(termino)
@@ -54,9 +55,9 @@ export class PorPaisComponent{
     (err) => this.paisesSugeridos = []);
   }
 
-buscarSugerido(termino:string){
-  this.buscar(termino);
-}
+  buscarSugerido(termino:string){
+    this.buscar(termino);
+  } 
 
 
 }
